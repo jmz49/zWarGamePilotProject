@@ -86,7 +86,7 @@ final class Character : Team {
     // print character's characteristics
     func displayTheCharacteristicsOfOneCharacterOfTheTeam() {
         let sign = self.role.roleWeapon.effect > 0 ? "+" : ""
-        print("     \"\(self.characterName)\", un \"\(self.role.roleName)\" avec \(self.role.life)\\\(self.role.maxLife) points de vie,\n     Équipement : \"\(self.role.roleWeapon.weaponName)\" avec un impact de \(sign)\(self.role.roleWeapon.effect) points de vie à la victime.\n")
+        print("     \"\(self.characterName)\", un \"\(self.role.roleName)\" avec \(self.role.life)\\\(self.role.maxLife) points de vie,\n     Action : \"\(self.role.roleWeapon.weaponName)\" avec un impact de \(sign)\(self.role.roleWeapon.effect) points de vie à la victime.\n")
     } // end of : displayCharacteristicsCharacter()
     
     func isTheCharacterStillAlive() -> Bool {
@@ -211,6 +211,7 @@ final class Character : Team {
     func executionOfAnyTypeOfAssault (from fighter: Character) {
         
         // unique instruction concretizing the virtual fight
+        // PLEASE NOTE : This is an addition of negative relative numbers (effect)
         self.role.life = self.role.life + fighter.role.roleWeapon.effect
         
         // in case of negative roleLife

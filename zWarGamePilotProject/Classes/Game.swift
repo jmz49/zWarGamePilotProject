@@ -136,12 +136,11 @@ class Game {
                 (attackingTeam, targetTeam) = attackingTeam.firstRandomRound()
             } else {
                 ///swap teams after first round
-                 #warning("❌❌❌")
                 (attackingTeam, targetTeam) = winningTeam.switchLosingTeamToAttackingTeam(losingTeam: losingTeam)
             }
             
             // MARK: - Choose the Attacking Character:
-            attackingCharacter = attackingTeam.choiceOfOneTeamCharacter()
+            attackingCharacter = attackingTeam.choiceOfOneTeamCharactercontext(context: "attaquante")
             // in Case of healer choice, we have to go to a special treatment.
             if attackingCharacter.role.roleName == constants.HEALER_ROLE {
                 // case of Healer, we have to go to his special treatment: selectHealer
@@ -154,7 +153,7 @@ class Game {
             // if the first attacker isn't an healer with a special treatment
             if attackingCharacter.role.roleName != constants.HEALER_ROLE {
                 // MARK: - Choose the Target Character:
-                targetCharacter = targetTeam.choiceOfOneTeamCharacter()
+                targetCharacter = targetTeam.choiceOfOneTeamCharactercontext(context: "attaquée")
             } // end of : if attackingCharacter.role.roleName != constants.HEALER_ROLE {
             
             // in Case of healer choice, we have to go to a special treatment.

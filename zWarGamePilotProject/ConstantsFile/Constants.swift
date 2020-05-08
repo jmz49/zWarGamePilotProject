@@ -49,7 +49,7 @@ struct constants {
     static let ROLE_1_MAXLIFE = 100
     
     static let WEAPON_1 = "weapon_1"
-    static let WEAPON_1_IMPACT = -50
+    static let WEAPON_1_EFFECT = -50
 
     // Character_2 constants
     static let ROLE_2 = "role_2  "
@@ -57,7 +57,7 @@ struct constants {
     static let ROLE_2_MAXLIFE = 100
     
     static let WEAPON_2 = "weapon_2"
-    static let WEAPON_2_IMPACT = -50
+    static let WEAPON_2_EFFECT = -50
     
 
     //Character_3 constants
@@ -66,7 +66,7 @@ struct constants {
     static let ROLE_3_MAXLIFE = 100
     
     static let WEAPON_3 = "weapon_3"
-    static let WEAPON_3_IMPACT = -50
+    static let WEAPON_3_EFFECT = -50
     
     //Character_4 constants
     static let ROLE_4 = "role_4  "
@@ -74,7 +74,7 @@ struct constants {
     static let ROLE_4_MAXLIFE = 100
     
     static let WEAPON_4 = "weapon_4"
-    static let WEAPON_4_IMPACT = -50
+    static let WEAPON_4_EFFECT = -50
 
     // Character_5 constants
     static let ROLE_5 = "role_5  "
@@ -82,7 +82,7 @@ struct constants {
     static let ROLE_5_MAXLIFE = 100
     
     static let WEAPON_5 = "weapon_5"
-    static let WEAPON_5_IMPACT = -50
+    static let WEAPON_5_EFFECT = -50
 
     //Character_6 constants
     static let ROLE_6 = "role_6  "
@@ -90,7 +90,7 @@ struct constants {
     static let ROLE_6_MAXLIFE = 100
     
     static let WEAPON_6 = "weapon_5"
-    static let WEAPON_6_IMPACT = -50
+    static let WEAPON_6_EFFECT = -50
 
     //Character_Healer constants
     static let HEALER_ROLE = "Soigneur"
@@ -98,10 +98,10 @@ struct constants {
     static let HEALER_MAXLIFE = 100
     
     static let HEALER_WEAPON = "Surgery "
-    static let HEALER_IMPACT = 100
+    static let HEALER_EFFECT = 100
       
     //Magic Weapon
     static let MAGIC_WEAPON = "Fire of devil 👺"
-    static let MAGIC_IMPACT = -1000
+    static let MAGIC_EFFECT = -1000
 
 }

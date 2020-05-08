@@ -52,7 +52,7 @@ class Team : Game {
     } // end of : fileprivate func displayCharactersTeamForFight() {
                         // MARK: - Select Character for fight
 
-    func characterSelection() -> Character {
+    func characterSelection(context: String) -> Character {
 //        displayAllCharactersOfTheTeam()
         var selectedCharacter: Character = characters[0]
         var choiceIsOk: Bool = true
@@ -75,7 +75,7 @@ class Team : Game {
         } while choiceIsOk == false // end of : if let choice = readLine() {
 
         
-        print("\n  ✅ L'équipe numéro \"\(self.teamId+1)\" - \"\(self.teamName)\" a choisi comme combattant,")
+        print("\n  ✅ L'équipe numéro \"\(self.teamId+1)\" - \"\(self.teamName)\", \(context), a choisi comme combattant,")
         selectedCharacter.displayTheCharacteristicsOfOneCharacterOfTheTeam()
         return selectedCharacter
     } // end of func selectCharacterForFight()
@@ -144,11 +144,11 @@ class Team : Game {
     } // end of :displayStatusTeam() {
     
     
-        func choiceOfOneTeamCharacter()-> Character {
+    func choiceOfOneTeamCharactercontext(context: String) -> Character {
             
             self.displayTheCharacteristicsOfAllCharacterOfTheTeam()
 
-            let returnedCharacter = self.characterSelection()
+            let returnedCharacter = self.characterSelection(context: context)
 
             return returnedCharacter
             
