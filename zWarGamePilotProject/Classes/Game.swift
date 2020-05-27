@@ -46,12 +46,12 @@ class Game {
     fileprivate func titleGame() {
         // titles
         print("\n\(constants.LINE)")
-        print("                       \(constants.GAME_TITLE)")
+        print("                       \(self.gameName)")
         print("\n\(constants.LINE)\n")
     }
     
     func displayFromCurrentClass() {
-        print("🔴 01 display from class Game")
+        print(" \n🔴 01 display from class Game")
         print("🔴 01 self.warGameName : \"\(self.gameName)\"\n")
     }
     
@@ -75,17 +75,19 @@ class Game {
             var anyCharacter: Character
             for characterIndex in 0...constants.DEFAULT_CHARACTERS_NUMBER - 1 {
                 anyCharacter = anyTeam.creationCharacter(characterIndex: characterIndex)
+                // to respect the concept of class responsibility
                 anyCharacter.createRole()
-                anyTeam.characters.append(anyCharacter)
+                // to respect the concept of class responsibility
+                anyTeam.appendNewCharacterOfTheTeam(newCharacter: anyCharacter)
                 if displayColoredBalls {
                     anyCharacter.displayFromCurrentClass()
                 }
             } /// for characterIndex in 0...constants.DEFAULT_CHARACTERS_NUMBER
+            
+            print("\n  Récapitulation de la composition :")
             anyTeam.displayTheCharacteristicsOfAllCharacterOfTheTeam()
             
         } // end of :for playerIndex in 0...constants.DEFAULT_PLAYERS_NUMBER
-        
-        print("  Récapitulation de la composition de L'équipe :")
         
         
     } // func mainCasting() {

@@ -12,7 +12,8 @@ class Role {
 
     var roleName: String
     var life: Int
-    var maxLife: Int
+    let maxLife: Int
+    
     var roleWeapon: Weapon
 
     init(roleName: String, life: Int, maxLife: Int, roleWeapon: Weapon) {

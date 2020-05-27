@@ -44,7 +44,7 @@ struct constants {
     
     
     // Character_1 constants
-    static let ROLE_1 = "role_1  "
+    static let ROLE_1 = "Assassin  "
     static let ROLE_1_LIFE = 100
     static let ROLE_1_MAXLIFE = 100
     

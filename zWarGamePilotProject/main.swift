@@ -11,7 +11,7 @@ import Foundation
 // MARK: - Development assistance variables
 
 // Automatic generation of objects (true or false)
-var initAuto: Bool = true
+var initAuto: Bool = false
 
 // Display of initiated objects (true or false)
 var displayColoredBalls: Bool = true

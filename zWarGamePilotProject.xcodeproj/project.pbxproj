@@ -75,7 +75,7 @@
 			children = (
 				EC8DAD7C245DBE6C004E7A25 /* main.swift */,
 				EC8DAD83245DBEE6004E7A25 /* Classes */,
-				EC8DAD94245DC053004E7A25 /* ConstantsFile */,
+				EC8DAD94245DC053004E7A25 /* Constants */,
 			);
 			path = zWarGamePilotProject;
 			sourceTree = "<group>";
@@ -102,12 +102,12 @@
 			path = gameExtensions;
 			sourceTree = "<group>";
 		};
-		EC8DAD94245DC053004E7A25 /* ConstantsFile */ = {
+		EC8DAD94245DC053004E7A25 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
 				EC8DAD95245DC0EB004E7A25 /* Constants.swift */,
 			);
-			path = ConstantsFile;
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -41,6 +41,12 @@ class Team : Game {
         let anyCharacter = Character(gameName: self.gameName, teamId: self.teamId, teamName: self.teamName, characterId: characterIndex, characterName: returnedData)
         return anyCharacter
     } // end of : func setUpCharacters() {
+    
+    
+    func appendNewCharacterOfTheTeam(newCharacter: Character) {
+        self.characters.append(newCharacter)
+    } // end of : func setUpCharacters() {
+    
 
     func displayTheCharacteristicsOfAllCharacterOfTheTeam() {
         print("\n  Équipe numéro \"\(teamId + 1)\" - \"\(teamName)\"\n")
@@ -57,7 +63,7 @@ class Team : Game {
         var selectedCharacter: Character = characters[0]
         var choiceIsOk: Bool = true
         repeat {
-            print("\n  👋 Choisissez votre combattant : ", terminator: "")
+            print("\n  👋 Quel personnage de votre équipe choisissez-vous ? ", terminator: "")
             if let inputChoice = readLine() {
                 if inputChoice == "1" || inputChoice == "2" || inputChoice == "3" {
                     guard let intInputChoice = Int(inputChoice) else { fatalError() }
