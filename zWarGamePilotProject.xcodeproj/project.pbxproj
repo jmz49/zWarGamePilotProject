@@ -137,7 +137,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1140;
-				LastUpgradeCheck = 1140;
+				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = "Jean-Michel ZARAGOZA";
 				TargetAttributes = {
 					EC8DAD78245DBE6C004E7A25 = {
@@ -299,6 +299,7 @@
 		EC8DAD81245DBE6C004E7A25 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7F38HBPP7L;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -310,6 +311,7 @@
 		EC8DAD82245DBE6C004E7A25 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7F38HBPP7L;
 				ENABLE_HARDENED_RUNTIME = YES;

@@ -25,29 +25,26 @@ class Team : Game {
     
     override func displayFromCurrentClass() {
         super.displayFromCurrentClass()
-        print("    🟢 02 display from class Team")
-        print("    🟢 02 self.teamId : \(self.teamId)")
-        print("    🟢 02 self.teamName : \(self.teamName)\n")
+        print("    🟢 Display from class Team")
+        print("    🟢 self.teamId : \(self.teamId)")
+        print("    🟢 self.teamName : \(self.teamName)\n")
     }
     
     
                         // MARK: - Create characters for each team
     // Setting Teams
     func creationCharacter(characterIndex: Int) -> Character {
-        print("\n   Équipe \(self.teamName) : Désignation des combattants\n")
-        print("      Joueur numéro \(self.teamId+1) - \"\(self.teamName)\"\n\n      Nomination du guerrier numéro \(characterIndex + 1) :\n")
+        print("\n   Équipe \(self.teamName) : Désignation des personnages\n")
+        print("      Nomination du personnage numéro \(characterIndex + 1) :\n")
         print("      Quel est son nom ? ", terminator: "")
         let returnedData = Game.choiceNames()
-        let anyCharacter = Character(gameName: self.gameName, teamId: self.teamId, teamName: self.teamName, characterId: characterIndex, characterName: returnedData)
-        return anyCharacter
+        return Character(gameName: self.gameName, teamId: self.teamId, teamName: self.teamName, characterId: characterIndex, characterName: returnedData)
     } // end of : func setUpCharacters() {
-    
     
     func appendNewCharacterOfTheTeam(newCharacter: Character) {
         self.characters.append(newCharacter)
     } // end of : func setUpCharacters() {
     
-
     func displayTheCharacteristicsOfAllCharacterOfTheTeam() {
         print("\n  Équipe numéro \"\(teamId + 1)\" - \"\(teamName)\"\n")
         for characterIndex in 0 ... constants.DEFAULT_CHARACTERS_NUMBER-1 {
@@ -81,7 +78,7 @@ class Team : Game {
         } while choiceIsOk == false // end of : if let choice = readLine() {
 
         
-        print("\n  ✅ L'équipe numéro \"\(self.teamId+1)\" - \"\(self.teamName)\", \(context), a choisi comme combattant,")
+        print("\n  ✅ L'équipe numéro \"\(self.teamId+1)\" - \"\(self.teamName)\", \(context), a choisi comme combattant : ")
         selectedCharacter.displayTheCharacteristicsOfOneCharacterOfTheTeam()
         return selectedCharacter
     } // end of func selectCharacterForFight()

@@ -23,8 +23,9 @@ class Game {
     // MARK: - : Main function of the game
     
     func mainGame() {
+        
         //Game Tittle
-        titleGame()
+        titleOfGame()
         
         if initAuto {
             /// extensionCastingAuto
@@ -43,7 +44,7 @@ class Game {
     
     // MARK: - Titles Start Game
     
-    fileprivate func titleGame() {
+    fileprivate func titleOfGame() {
         // titles
         print("\n\(constants.LINE)")
         print("                       \(self.gameName)")
@@ -51,8 +52,8 @@ class Game {
     }
     
     func displayFromCurrentClass() {
-        print(" \n🔴 01 display from class Game")
-        print("🔴 01 self.warGameName : \"\(self.gameName)\"\n")
+        print(" \n🔴 Display from class Game")
+        print("🔴 self.gameName : \"\(self.gameName)\"\n")
     }
     
     
@@ -63,32 +64,31 @@ class Game {
             displayFromCurrentClass()
         }
         
-        var anyTeam: Team
+//        var anyTeam: Team
         for playerIndex in 0...constants.DEFAULT_PLAYERS_NUMBER - 1 {
             
-            anyTeam = creationOfTeams(playerIndex: playerIndex)
+            Game.teams.append(creationOfTeams(playerIndex: playerIndex))
             if displayColoredBalls {
-                anyTeam.displayFromCurrentClass()
+                Game.teams[playerIndex].displayFromCurrentClass()
             }
-            
             
             var anyCharacter: Character
             for characterIndex in 0...constants.DEFAULT_CHARACTERS_NUMBER - 1 {
-                anyCharacter = anyTeam.creationCharacter(characterIndex: characterIndex)
+                anyCharacter = Game.teams[playerIndex].creationCharacter(characterIndex: characterIndex)
                 // to respect the concept of class responsibility
                 anyCharacter.createRole()
                 // to respect the concept of class responsibility
-                anyTeam.appendNewCharacterOfTheTeam(newCharacter: anyCharacter)
+                Game.teams[playerIndex].appendNewCharacterOfTheTeam(newCharacter: anyCharacter)
+                
                 if displayColoredBalls {
                     anyCharacter.displayFromCurrentClass()
                 }
             } /// for characterIndex in 0...constants.DEFAULT_CHARACTERS_NUMBER
             
             print("\n  Récapitulation de la composition :")
-            anyTeam.displayTheCharacteristicsOfAllCharacterOfTheTeam()
+            Game.teams[playerIndex].displayTheCharacteristicsOfAllCharacterOfTheTeam()
             
         } // end of :for playerIndex in 0...constants.DEFAULT_PLAYERS_NUMBER
-        
         
     } // func mainCasting() {
     
@@ -98,10 +98,8 @@ class Game {
     func creationOfTeams(playerIndex: Int) -> Team {
         print("\n   JOUEUR NUMERO \(playerIndex+1) -> Quel sera le nom de ton équipe ? ", terminator: "")
         let returnedData = Game.choiceNames()
-        let anyTeam = Team(gameName: gameName, teamId: playerIndex, teamName: returnedData)
-        Game.teams.append(anyTeam)
-        
-        return anyTeam
+        let newTeam = Team(gameName: gameName, teamId: playerIndex, teamName: returnedData)
+        return newTeam
     } // end of : func creationOfTeams
     
     

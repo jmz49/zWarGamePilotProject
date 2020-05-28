@@ -14,7 +14,8 @@ import Foundation
 var initAuto: Bool = false
 
 // Display of initiated objects (true or false)
-var displayColoredBalls: Bool = true
+var displayColoredBalls: Bool = false
+
 
 // MARK: - instantiation of the class "game", the heart of the game.
 
