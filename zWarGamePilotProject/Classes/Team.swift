@@ -41,6 +41,7 @@ class Team : Game {
         return Character(gameName: self.gameName, teamId: self.teamId, teamName: self.teamName, characterId: characterIndex, characterName: returnedData)
     } // end of : func setUpCharacters() {
     
+    
     func appendNewCharacterOfTheTeam(newCharacter: Character) {
         self.characters.append(newCharacter)
     } // end of : func setUpCharacters() {

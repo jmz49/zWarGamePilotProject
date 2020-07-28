@@ -11,13 +11,15 @@ import Foundation
 // MARK: - Game extension for castingAuto functions
 extension Game {
     
+    // Si nous sommes ici, dans cette fonction, c'est que l'instance de la classe Game existe
+    
     func mainCastingAuto() {
 
         let gameName = constants.GAME_TITLE
         
-    ///=======================================================
-    /// MARK: - Casting de la première équipe
-    ///=======================================================
+    //=======================================================
+    // MARK: - Casting de la première équipe
+    //=======================================================
         
         var teamId = 0
         var teamName = "AAA_GRRRR!"
@@ -44,9 +46,9 @@ extension Game {
         print("  Récapitulation :")
         Game.teams[0].displayTheCharacteristicsOfAllCharacterOfTheTeam()
         
-    ///=======================================================
-    /// MARK: - Casting de la seconde équipe
-    ///=======================================================
+    //=======================================================
+    // MARK: - Casting de la seconde équipe
+    //=======================================================
         
         
         teamId = 1

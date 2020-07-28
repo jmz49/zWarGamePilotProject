@@ -34,6 +34,7 @@ class Game {
             /// extensionCasting
             mainCasting()
         }
+        
         /// extentionRunFight
         mainFight()
         
@@ -85,6 +86,7 @@ class Game {
                 }
             } /// for characterIndex in 0...constants.DEFAULT_CHARACTERS_NUMBER
             
+            // to respect the concept of class responsibility
             print("\n  Récapitulation de la composition :")
             Game.teams[playerIndex].displayTheCharacteristicsOfAllCharacterOfTheTeam()
             
@@ -98,8 +100,7 @@ class Game {
     func creationOfTeams(playerIndex: Int) -> Team {
         print("\n   JOUEUR NUMERO \(playerIndex+1) -> Quel sera le nom de ton équipe ? ", terminator: "")
         let returnedData = Game.choiceNames()
-        let newTeam = Team(gameName: gameName, teamId: playerIndex, teamName: returnedData)
-        return newTeam
+        return Team(gameName: gameName, teamId: playerIndex, teamName: returnedData)
     } // end of : func creationOfTeams
     
     
@@ -141,6 +142,7 @@ class Game {
             
             // MARK: - Choose the Attacking Character:
             attackingCharacter = attackingTeam.choiceOfOneTeamCharactercontext(context: "attaquante")
+            
             // in Case of healer choice, we have to go to a special treatment.
             if attackingCharacter.role.roleName == constants.HEALER_ROLE {
                 // case of Healer, we have to go to his special treatment: selectHealer

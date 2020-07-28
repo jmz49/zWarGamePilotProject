@@ -90,7 +90,7 @@ final class Character : Team {
     } // end of : displayCharacteristicsCharacter()
     
     func isTheCharacterStillAlive() -> Bool {
-            return role.life > 0 ? true : false
+        return self.role.life > 0 ? true : false
     } // end of: isStillAlive() -> Bool {
 
     
@@ -208,7 +208,7 @@ final class Character : Team {
         print("         - l'attaqué \"\(targetCharacter.characterName)\", un \"\(targetCharacter.role.roleName)\" de l'équipe \(targetCharacter.teamId+1) - \"\(targetCharacter.teamName)\",\(endingText)")
     } // end of : func fightExit
     
-    func executionOfAnyTypeOfAssault (from fighter: Character) {
+    func executionOfAnyTypeOfAssault(from fighter: Character) {
         
         // unique instruction concretizing the virtual fight
         // PLEASE NOTE : This is an addition of negative relative numbers (effect)
