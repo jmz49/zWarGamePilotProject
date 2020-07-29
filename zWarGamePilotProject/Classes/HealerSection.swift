@@ -8,7 +8,7 @@
 
 import Foundation
 
-class HealerTreatmentProcess {
+class HealerSection {
     
     var teamConcerned: Team
     var teamNotConcerned: Team
@@ -19,8 +19,6 @@ class HealerTreatmentProcess {
         self.teamConcerned = teamConcerned
         self.teamNotConcerned = teamNotConcerned
         self.healerChoosen = healerChoosen
-        
-        print("self.teamConcerned : \(self.teamConcerned.teamName)")
     }
     
     func treatmentProcessOfTheHealer() -> (Team, Team) {

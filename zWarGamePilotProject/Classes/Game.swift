@@ -147,7 +147,7 @@ class Game {
             if attackingCharacter.role.roleName == constants.HEALER_ROLE {
                 // case of Healer, we have to go to his special treatment
                 // instanciation de la classe HealerTreatmentProcess
-                let healerTreatmentProcess = HealerTreatmentProcess(teamConcerned: attackingTeam, teamNotConcerned: targetTeam, healerChoosen: attackingCharacter)
+                let healerTreatmentProcess = HealerSection(teamConcerned: attackingTeam, teamNotConcerned: targetTeam, healerChoosen: attackingCharacter)
                 // appel de la fonction treatmentProcessOfTheHealer de cette instance
                 (winningTeam, losingTeam) = healerTreatmentProcess.treatmentProcessOfTheHealer()
             } /// end of :  if attackingCharacter.role.roleName == constants.GREY_ROLE
@@ -162,7 +162,7 @@ class Game {
             if targetCharacter.role.roleName == constants.HEALER_ROLE {
                 // case of Healer, we have to go to his special treatment
                  // instanciation de la classe HealerTreatmentProcess
-                 let healerTreatmentProcess = HealerTreatmentProcess(teamConcerned: targetTeam, teamNotConcerned: attackingTeam, healerChoosen: targetCharacter)
+                 let healerTreatmentProcess = HealerSection(teamConcerned: targetTeam, teamNotConcerned: attackingTeam, healerChoosen: targetCharacter)
                  // appel de la fonction treatmentProcessOfTheHealer de cette instance
                  (winningTeam, losingTeam) = healerTreatmentProcess.treatmentProcessOfTheHealer()
             } /// end of : if targetCharacter.role.roleName == constants.GREY_ROLE
@@ -171,8 +171,17 @@ class Game {
             
             // Run the assault func WITH THE TWO CHARACTERS selected
             if attackingCharacter.role.roleName != constants.HEALER_ROLE && targetCharacter.role.roleName != constants.HEALER_ROLE {
+ 
+                //                (winningTeam, losingTeam) = attackingCharacter.launchOfTheAssault(targetCharacter: targetCharacter)
                 
-                (winningTeam, losingTeam) = attackingCharacter.launchOfTheAssault(targetCharacter: targetCharacter)
+                
+                // instanciation de la classe HealerTreatmentProcess
+                let fightSection = FightSection(attackingCharacter: attackingCharacter, targetCharacter: targetCharacter)
+                // appel de la fonction treatmentProcessOfTheHealer de cette instance
+                (winningTeam, losingTeam) = fightSection.launchOfTheAssault()
+                
+                
+
             }
             
         } while Game.teams[0].checkIfTeamIsAlive() && Game.teams[1].checkIfTeamIsAlive()

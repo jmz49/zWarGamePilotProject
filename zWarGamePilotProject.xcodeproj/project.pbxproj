@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EC7642D224D0533800F6BC80 /* HealerProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7642D124D0533800F6BC80 /* HealerProcess.swift */; };
+		EC65500E24D1E988007711DD /* FightSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC65500D24D1E988007711DD /* FightSection.swift */; };
+		EC7642D224D0533800F6BC80 /* HealerSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7642D124D0533800F6BC80 /* HealerSection.swift */; };
 		EC8DAD7D245DBE6C004E7A25 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8DAD7C245DBE6C004E7A25 /* main.swift */; };
 		EC8DAD85245DBF39004E7A25 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8DAD84245DBF39004E7A25 /* Game.swift */; };
 		EC8DAD87245DBF51004E7A25 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8DAD86245DBF51004E7A25 /* Team.swift */; };
@@ -32,7 +33,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		EC7642D124D0533800F6BC80 /* HealerProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealerProcess.swift; sourceTree = "<group>"; };
+		EC65500D24D1E988007711DD /* FightSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightSection.swift; sourceTree = "<group>"; };
+		EC7642D124D0533800F6BC80 /* HealerSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealerSection.swift; sourceTree = "<group>"; };
 		EC8DAD79245DBE6C004E7A25 /* zWarGamePilotProject */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = zWarGamePilotProject; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC8DAD7C245DBE6C004E7A25 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		EC8DAD84245DBF39004E7A25 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
@@ -88,9 +90,10 @@
 				EC8DAD84245DBF39004E7A25 /* Game.swift */,
 				EC8DAD86245DBF51004E7A25 /* Team.swift */,
 				EC8DAD88245DBF60004E7A25 /* Character.swift */,
+				EC65500D24D1E988007711DD /* FightSection.swift */,
 				EC8DAD8A245DBF6F004E7A25 /* Role.swift */,
 				EC8DAD8C245DBF7D004E7A25 /* Weapon.swift */,
-				EC7642D124D0533800F6BC80 /* HealerProcess.swift */,
+				EC7642D124D0533800F6BC80 /* HealerSection.swift */,
 				EC8DAD8E245DBFA7004E7A25 /* gameExtensions */,
 			);
 			path = Classes;
@@ -175,12 +178,13 @@
 				EC8DAD7D245DBE6C004E7A25 /* main.swift in Sources */,
 				EC8DAD92245DC000004E7A25 /* extentionStatics.swift in Sources */,
 				EC8DAD85245DBF39004E7A25 /* Game.swift in Sources */,
-				EC7642D224D0533800F6BC80 /* HealerProcess.swift in Sources */,
+				EC7642D224D0533800F6BC80 /* HealerSection.swift in Sources */,
 				EC8DAD90245DBFE0004E7A25 /* extensionCastingAuto.swift in Sources */,
 				EC8DAD89245DBF60004E7A25 /* Character.swift in Sources */,
 				EC8DAD8B245DBF6F004E7A25 /* Role.swift in Sources */,
 				EC8DAD8D245DBF7D004E7A25 /* Weapon.swift in Sources */,
 				EC8DAD96245DC0EB004E7A25 /* Constants.swift in Sources */,
+				EC65500E24D1E988007711DD /* FightSection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
