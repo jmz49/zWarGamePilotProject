@@ -222,97 +222,97 @@ final class Character : Team {
 
     
     // MARK: - Healing Section
-    
-    func treatmentProcessOfTheHealer(opponentTeam: Team) -> (Team, Team) {
-        
-        // arbitrary initializations to please Swift
-        var local_WinningTeam: Team = Game.teams[0]
-        var local_LosingTeam: Team = Game.teams[0]
-        let local_healerTeam = Game.teams[self.teamId]
-        
-        print("\n     👺 C'est \"\(self.characterName)\" - \"\(self.role.roleName)\" de l'équipe  \(self.teamId + 1) - \"\(self.teamName)\" qui a été choisi !!!\n")
-        print("        Mais qui soigner dans l'équipe ?\n")
-        
-        local_healerTeam.displayThePartnersToBeTreated(healerTeam: local_healerTeam)
-        
-        // check if the healer stays alone?
-        let theHealerStaysAlone = local_healerTeam.isTheHealerStaysAlone()
-        if theHealerStaysAlone {
-            self.theHealerStaysAloneAndFlees()
-            local_WinningTeam = opponentTeam
-            local_LosingTeam = local_healerTeam
-        } else {
-            
-            let local_CharacterSelectedToHeal = local_healerTeam.selectCharacterToHeal()
-
-            let isTheChoiceValid: Bool = isThisCareChoiceValid(characterSelectedToHeal: local_CharacterSelectedToHeal)
-            if isTheChoiceValid {
-                local_CharacterSelectedToHeal.validCareChoice(healerSelected: self)
-                local_WinningTeam = local_healerTeam
-                local_LosingTeam = opponentTeam
-            } else {
-                notValidCareChoice(healerSelected: self)
-                local_WinningTeam = opponentTeam
-                local_LosingTeam = local_healerTeam
-            } //end of : if isTheChoiceValid {
-        } // end of : let isTheHealerAlone = attakingTeam.checkIfTheHealerIsAlone()
-        return (local_WinningTeam, local_LosingTeam)
-    } // end of : func treatmentProcessOfTheHealer
-    
-    // MARK: - validCareChoice
-    // A Healer cannot to heal dead fighter or himeself
-    fileprivate func isThisCareChoiceValid (characterSelectedToHeal: Character) -> Bool {
-        if characterSelectedToHeal.role.roleName == constants.HEALER_ROLE {
-            print("\n      🛂 Le soigneur ne peut pas se soigner lui même !")
-            return false
-        } else if characterSelectedToHeal.role.life == 0 {
-            print("\n      🛂 Le soigneur s'est porté au secours d\'un guerrier déjà mort !")
-            return false
-        } else if characterSelectedToHeal.role.life == characterSelectedToHeal.role.maxLife {
-            print("\n      🛂 Le soigneur s'est porté au secours d\'un guerrier en pleine forve !")
-            return false
-        } else {
-            return true
-        } // end of :  if characterSelectedToHeal.name == constants.HEALER_ROLE {
-    } // end of : func validCareChoice
-    
-    
-    fileprivate func validCareChoice(healerSelected: Character) {
-        
-        // healing execution
-        self.role.life = self.role.life + healerSelected.role.roleWeapon.effect
-        
-        // verification of being less than or equal to the local_CharacterSelectedToHeal's maximum life
-        if self.role.life > self.role.maxLife {
-            self.role.life = self.role.maxLife
-        }
-        print("\n     👺 Après les soins prodigués par \"\(healerSelected.characterName)\", \"\(healerSelected.role.roleName)\" de l'équipe \"\(healerSelected.teamName)\"\n        son compère \"\(self.characterName)\", \"\(self.role.roleName)\" a maintenant  \(self.role.life) points de vie 💪🏼")
-
-    }
-    
-    fileprivate func notValidCareChoice(healerSelected: Character) {
-        print("\n      👺 Désolé, mais ce choix n'est pas valide,\n         L'équipe \"\(healerSelected.teamName)\" perd son tour ! 😩\n")
-    }
-    
-    // MARK: - theHealerBeAloneFlees
-    func theHealerStaysAloneAndFlees() {
-        
-        // Last survivor, the healer is declared dead. He cannot fight, so we declare the end of the game
-        self.characterIsDeclaredDead()
-        
-        print ("\n     🔥 Aie... aie... aie... Resté seul, \n        \"\(self.characterName)\" - \"\(self.role.roleName)\" ne peut pas se battre et donc, ne peut plus rien faire...\n        il explose en boule de feu, et son équipe, \"\(self.teamName)\", est décimée ! 👎🏻\n")
-        
-        // if the wizzard is dead, he's forfeit
-        
-    } // end of :func theHealerBeAloneFlees() {
-    
-    
-    // MARK: -  CharacterIsDeclaredDead
-    // a character is declared dead, he's out !
-    func characterIsDeclaredDead() {
-        // Last survivor, the HEALER is declared dead. He cannot fight, so we declare him dead.
-        role.life = 0
-    } // end of : func  characterIsDeclaredDead() {
+//    
+//    func treatmentProcessOfTheHealer(opponentTeam: Team) -> (Team, Team) {
+//        
+//        // arbitrary initializations to please Swift
+//        var local_WinningTeam: Team = Game.teams[0]
+//        var local_LosingTeam: Team = Game.teams[0]
+//        let local_healerTeam = Game.teams[self.teamId]
+//        
+//        print("\n     👺 C'est \"\(self.characterName)\" - \"\(self.role.roleName)\" de l'équipe  \(self.teamId + 1) - \"\(self.teamName)\" qui a été choisi !!!\n")
+//        print("        Mais qui soigner dans l'équipe ?\n")
+//        
+//        local_healerTeam.displayThePartnersToBeTreated(healerTeam: local_healerTeam)
+//        
+//        // check if the healer stays alone?
+//        let theHealerStaysAlone = local_healerTeam.isTheHealerStaysAlone()
+//        if theHealerStaysAlone {
+//            self.theHealerStaysAloneAndFlees()
+//            local_WinningTeam = opponentTeam
+//            local_LosingTeam = local_healerTeam
+//        } else {
+//            
+//            let local_CharacterSelectedToHeal = local_healerTeam.selectCharacterToHeal()
+//
+//            let isTheChoiceValid: Bool = isThisCareChoiceValid(characterSelectedToHeal: local_CharacterSelectedToHeal)
+//            if isTheChoiceValid {
+//                local_CharacterSelectedToHeal.validCareChoice(healerSelected: self)
+//                local_WinningTeam = local_healerTeam
+//                local_LosingTeam = opponentTeam
+//            } else {
+//                notValidCareChoice(healerSelected: self)
+//                local_WinningTeam = opponentTeam
+//                local_LosingTeam = local_healerTeam
+//            } //end of : if isTheChoiceValid {
+//        } // end of : let isTheHealerAlone = attakingTeam.checkIfTheHealerIsAlone()
+//        return (local_WinningTeam, local_LosingTeam)
+//    } // end of : func treatmentProcessOfTheHealer
+//    
+//    // MARK: - validCareChoice
+//    // A Healer cannot to heal dead fighter or himeself
+//    fileprivate func isThisCareChoiceValid (characterSelectedToHeal: Character) -> Bool {
+//        if characterSelectedToHeal.role.roleName == constants.HEALER_ROLE {
+//            print("\n      🛂 Le soigneur ne peut pas se soigner lui même !")
+//            return false
+//        } else if characterSelectedToHeal.role.life == 0 {
+//            print("\n      🛂 Le soigneur s'est porté au secours d\'un guerrier déjà mort !")
+//            return false
+//        } else if characterSelectedToHeal.role.life == characterSelectedToHeal.role.maxLife {
+//            print("\n      🛂 Le soigneur s'est porté au secours d\'un guerrier en pleine forCe !")
+//            return false
+//        } else {
+//            return true
+//        } // end of :  if characterSelectedToHeal.name == constants.HEALER_ROLE {
+//    } // end of : func validCareChoice
+//    
+//    
+//    fileprivate func validCareChoice(healerSelected: Character) {
+//        
+//        // healing execution
+//        self.role.life = self.role.life + healerSelected.role.roleWeapon.effect
+//        
+//        // verification of being less than or equal to the local_CharacterSelectedToHeal's maximum life
+//        if self.role.life > self.role.maxLife {
+//            self.role.life = self.role.maxLife
+//        }
+//        print("\n     👺 Après les soins prodigués par \"\(healerSelected.characterName)\", \"\(healerSelected.role.roleName)\" de l'équipe \"\(healerSelected.teamName)\"\n        son compère \"\(self.characterName)\", \"\(self.role.roleName)\" a maintenant  \(self.role.life) points de vie 💪🏼")
+//
+//    }
+//    
+//    fileprivate func notValidCareChoice(healerSelected: Character) {
+//        print("\n      👺 Désolé, mais ce choix n'est pas valide,\n         L'équipe \"\(healerSelected.teamName)\" perd son tour ! 😩\n")
+//    }
+//    
+//    // MARK: - theHealerBeAloneFlees
+//    func theHealerStaysAloneAndFlees() {
+//        
+//        // Last survivor, the healer is declared dead. He cannot fight, so we declare the end of the game
+//        self.characterIsDeclaredDead()
+//        
+//        print ("\n     🔥 Aie... aie... aie... Resté seul, \n        \"\(self.characterName)\" - \"\(self.role.roleName)\" ne peut pas se battre et donc, ne peut plus rien faire...\n        il explose en boule de feu, et son équipe, \"\(self.teamName)\", est décimée ! 👎🏻\n")
+//        
+//        // if the wizzard is dead, he's forfeit
+//        
+//    } // end of :func theHealerBeAloneFlees() {
+//    
+//    
+//    // MARK: -  CharacterIsDeclaredDead
+//    // a character is declared dead, he's out !
+//    func characterIsDeclaredDead() {
+//        // Last survivor, the HEALER is declared dead. He cannot fight, so we declare him dead.
+//        role.life = 0
+//    } // end of : func  characterIsDeclaredDead() {
     
 }// end of class Character
 

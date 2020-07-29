@@ -94,50 +94,50 @@ class Team : Game {
         return cumulLife > 0 ? true : false
     } // end of : func isTeamAlive() -> Bool
 
-                        // MARK: - Healing section
-    func displayThePartnersToBeTreated(healerTeam: Team) {
-
-        for index in 0 ... constants.DEFAULT_CHARACTERS_NUMBER - 1 {
-            print("         \(index+1) | \(healerTeam.characters[index].characterName) \(healerTeam.characters[index].role.roleName) \(healerTeam.characters[index].role.life)\\\(healerTeam.characters[index].role.maxLife)")
-        } // end of :  for index in 0... constants.DEFAULT_CHARACTERS_NUMBER - 1 {
-    } // end of :  displayPartnersToHeal(healerTeam: Team) {
-
-     func selectCharacterToHeal() -> Character {
-        var selectedFighter: Character = characters[0]
-        var choiceIsOk: Bool = true
-
-        repeat {
-            print("")
-            print("         Qui veux-tu soigner ? ", terminator: "")
-            if let inputChoice = readLine() {
-                if inputChoice == "1" || inputChoice == "2" || inputChoice == "3" {
-                    guard let intInputChoice = Int(inputChoice) else { fatalError() }
-                    let index = intInputChoice - 1
-                    selectedFighter = self.characters[index]
-                    choiceIsOk = true
-                }else{
-                   choiceIsOk = false
-                    print("⛔️ Erreur, saisissez un chiffre entre 1 et \(characters.count). Recommencez !")
-                } // end of : if inputChoice == "1"
-            }// end of : if let choice = readLine()
-        } while choiceIsOk == false // end of : if let choice = readLine() {
-        return selectedFighter
-    } // end of func selectCharacterToHeal()
-
-    func isTheHealerStaysAlone()-> Bool {
-        var numberOfCharacterDead: Int = 0
-        self.characters.forEach { (character) in
-            // nested tests because only one solution is possible
-            if character.role.roleName != constants.HEALER_ROLE {
-                if character.role.life <= 0 {
-                    numberOfCharacterDead += 1
-                } // end of : if characterRole.name == 0 {
-            } // end of : nested tests because only one solution is possible
-        } // end of : team.characters.forEach { (character) in
-        return  numberOfCharacterDead == constants.DEFAULT_CHARACTERS_NUMBER-1 ? true : false
-    } // end of : private func isTheHealerAlone
-
-                        // MARK: - Display Status Team ( end of game)
+//                        // MARK: - Healing section
+//    func displayThePartnersToBeTreated(healerTeam: Team) {
+//
+//        for index in 0 ... constants.DEFAULT_CHARACTERS_NUMBER - 1 {
+//            print("         \(index+1) | \(healerTeam.characters[index].characterName) \(healerTeam.characters[index].role.roleName) \(healerTeam.characters[index].role.life)\\\(healerTeam.characters[index].role.maxLife)")
+//        } // end of :  for index in 0... constants.DEFAULT_CHARACTERS_NUMBER - 1 {
+//    } // end of :  displayPartnersToHeal(healerTeam: Team) {
+//
+//     func selectCharacterToHeal() -> Character {
+//        var selectedFighter: Character = characters[0]
+//        var choiceIsOk: Bool = true
+//
+//        repeat {
+//            print("")
+//            print("         Qui veux-tu soigner ? ", terminator: "")
+//            if let inputChoice = readLine() {
+//                if inputChoice == "1" || inputChoice == "2" || inputChoice == "3" {
+//                    guard let intInputChoice = Int(inputChoice) else { fatalError() }
+//                    let index = intInputChoice - 1
+//                    selectedFighter = self.characters[index]
+//                    choiceIsOk = true
+//                }else{
+//                   choiceIsOk = false
+//                    print("⛔️ Erreur, saisissez un chiffre entre 1 et \(characters.count). Recommencez !")
+//                } // end of : if inputChoice == "1"
+//            }// end of : if let choice = readLine()
+//        } while choiceIsOk == false // end of : if let choice = readLine() {
+//        return selectedFighter
+//    } // end of func selectCharacterToHeal()
+//
+//    func isTheHealerStaysAlone()-> Bool {
+//        var numberOfCharacterDead: Int = 0
+//        self.characters.forEach { (character) in
+//            // nested tests because only one solution is possible
+//            if character.role.roleName != constants.HEALER_ROLE {
+//                if character.role.life <= 0 {
+//                    numberOfCharacterDead += 1
+//                } // end of : if characterRole.name == 0 {
+//            } // end of : nested tests because only one solution is possible
+//        } // end of : team.characters.forEach { (character) in
+//        return  numberOfCharacterDead == constants.DEFAULT_CHARACTERS_NUMBER-1 ? true : false
+//    } // end of : private func isTheHealerAlone
+//
+//                        // MARK: - Display Status Team ( end of game)
 
     func workForcesInventory() {
         print("    Équipe numéro \"\(self.teamId+1)\" - \"\(self.teamName)\" :\n")

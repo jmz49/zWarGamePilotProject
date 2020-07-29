@@ -145,11 +145,11 @@ class Game {
             
             // in Case of healer choice, we have to go to a special treatment.
             if attackingCharacter.role.roleName == constants.HEALER_ROLE {
-                // case of Healer, we have to go to his special treatment: selectHealer
-                let healerChoosen = attackingCharacter
-                let opponentTeam = targetTeam
-                (winningTeam, losingTeam) = healerChoosen.treatmentProcessOfTheHealer(opponentTeam: opponentTeam)
-                
+                // case of Healer, we have to go to his special treatment
+                // instanciation de la classe HealerTreatmentProcess
+                let healerTreatmentProcess = HealerTreatmentProcess(teamConcerned: attackingTeam, teamNotConcerned: targetTeam, healerChoosen: attackingCharacter)
+                // appel de la fonction treatmentProcessOfTheHealer de cette instance
+                (winningTeam, losingTeam) = healerTreatmentProcess.treatmentProcessOfTheHealer()
             } /// end of :  if attackingCharacter.role.roleName == constants.GREY_ROLE
             
             // if the first attacker isn't an healer with a special treatment
@@ -160,10 +160,11 @@ class Game {
             
             // in Case of healer choice, we have to go to a special treatment.
             if targetCharacter.role.roleName == constants.HEALER_ROLE {
-                // case of Healer, we have to go to his special treatment: selectHealer
-                let healerChoosen = targetCharacter
-                let opponentTeam = attackingTeam
-                (winningTeam, losingTeam) = healerChoosen.treatmentProcessOfTheHealer(opponentTeam: opponentTeam)
+                // case of Healer, we have to go to his special treatment
+                 // instanciation de la classe HealerTreatmentProcess
+                 let healerTreatmentProcess = HealerTreatmentProcess(teamConcerned: targetTeam, teamNotConcerned: attackingTeam, healerChoosen: targetCharacter)
+                 // appel de la fonction treatmentProcessOfTheHealer de cette instance
+                 (winningTeam, losingTeam) = healerTreatmentProcess.treatmentProcessOfTheHealer()
             } /// end of : if targetCharacter.role.roleName == constants.GREY_ROLE
             
             // MARK: - Fight section
