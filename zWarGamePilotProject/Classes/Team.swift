@@ -11,17 +11,17 @@ import Foundation
 class Team : Game {
     
     // MARK: -  Properties and initialization
-
-        var teamId:Int
-        var teamName: String
     
-        var characters: [Character] = []
-        
-        init(gameName: String, teamId: Int, teamName: String) {
-            self.teamId = teamId
-            self.teamName = teamName
-            super.init(gameName: gameName)
-        }
+    var teamId:Int
+    var teamName: String
+    
+    var characters: [Character] = []
+    
+    init(gameName: String, teamId: Int, teamName: String) {
+        self.teamId = teamId
+        self.teamName = teamName
+        super.init(gameName: gameName)
+    }
     
     override func displayFromCurrentClass() {
         super.displayFromCurrentClass()
@@ -31,7 +31,7 @@ class Team : Game {
     }
     
     
-                        // MARK: - Create characters for each team
+    // MARK: - Create characters for each team
     // Setting Teams
     func creationCharacter(characterIndex: Int) -> Character {
         print("\n   Équipe \(self.teamName) : Désignation des personnages\n")
@@ -50,14 +50,14 @@ class Team : Game {
         print("\n  Équipe numéro \"\(teamId + 1)\" - \"\(teamName)\"\n")
         for characterIndex in 0 ... constants.DEFAULT_CHARACTERS_NUMBER-1 {
             let sign = characters[characterIndex].role.roleWeapon.effect > 0 ? "+" : ""
-            print("  \(characterIndex+1) : \"\(characters[characterIndex].characterName)\" - \"\(characters[characterIndex].role.roleName)\" - \(characters[characterIndex].role.life)\\\(characters[characterIndex].role.maxLife) points de vie - \"\(characters[characterIndex].role.roleWeapon.weaponName)\" - impact : \(sign)\(characters[characterIndex].role.roleWeapon.effect) points de vie à la victime.")
+            print("  \(characterIndex+1) : \"\(characters[characterIndex].characterName)\" - \"\(characters[characterIndex].role.roleName)\" - \(characters[characterIndex].role.life)\\\(characters[characterIndex].role.maxLife) points de vie - \"\(characters[characterIndex].role.roleWeapon.weaponName)\" - impact : \(sign)\(characters[characterIndex].role.roleWeapon.effect) points de vie pour la victime.")
         }// end of :  for characterIndex in 0 ... constants.DEFAULT_CHARACTERS_NUMBER - 1 {
         print("")
     } // end of : fileprivate func displayCharactersTeamForFight() {
-                        // MARK: - Select Character for fight
-
+    // MARK: - Select Character for fight
+    
     func characterSelection(context: String) -> Character {
-//        displayAllCharactersOfTheTeam()
+        //        displayAllCharactersOfTheTeam()
         var selectedCharacter: Character = characters[0]
         var choiceIsOk: Bool = true
         repeat {
@@ -72,20 +72,20 @@ class Team : Game {
                         print ("  ⛔️ \(selectedCharacter.characterName) est éliminé 💀, choisissez un autre combattant !")
                     }
                 }else{
-                   choiceIsOk = false
+                    choiceIsOk = false
                     print("  ⛔️ Erreur! Vous devez saisir un chiffre entre  \"1\" et \"\(characters.count)\". Essayez à nouveau!")
                 } // end of : if inputChoice == "1"
             }// end of : if let choice = readLine()
         } while choiceIsOk == false // end of : if let choice = readLine() {
-
+        
         
         print("\n  ✅ L'équipe numéro \"\(self.teamId+1)\" - \"\(self.teamName)\", \(context), a choisi comme combattant : ")
         selectedCharacter.displayTheCharacteristicsOfOneCharacterOfTheTeam()
         return selectedCharacter
     } // end of func selectCharacterForFight()
-
-                        // MARK: - Check Team is still alive
-
+    
+    // MARK: - Check Team is still alive
+    
     func checkIfTeamIsAlive() -> Bool {
         var cumulLife: Int = 0
         characters.forEach { (character) in
@@ -93,10 +93,10 @@ class Team : Game {
         }
         return cumulLife > 0 ? true : false
     } // end of : func isTeamAlive() -> Bool
-
-
-//                        // MARK: - Display Status Team ( end of game)
-
+    
+    
+    //                        // MARK: - Display Status Team ( end of game)
+    
     func workForcesInventory() {
         print("    Équipe numéro \"\(self.teamId+1)\" - \"\(self.teamName)\" :\n")
         for index in 0...constants.DEFAULT_CHARACTERS_NUMBER - 1 {
@@ -107,15 +107,15 @@ class Team : Game {
     
     
     func choiceOfOneTeamCharactercontext(context: String) -> Character {
-            
-            self.displayTheCharacteristicsOfAllCharacterOfTheTeam()
-
-            let returnedCharacter = self.characterSelection(context: context)
-
-            return returnedCharacter
-            
-        } // fileprivate func choiceOfACharacterInTheAttackingTeam
-
+        
+        self.displayTheCharacteristicsOfAllCharacterOfTheTeam()
+        
+        let returnedCharacter = self.characterSelection(context: context)
+        
+        return returnedCharacter
+        
+    } // fileprivate func choiceOfACharacterInTheAttackingTeam
+    
     // MARK: - First Random Round
     // random event : which team start the first round of the fight ?
     
@@ -139,17 +139,14 @@ class Team : Game {
     } // end of : fileprivate firstRandomRound(teams: [Team]) -> (Team, Team){
     
     
-        // MARK: - Switch Losing Team to Attacking Team
-         func switchLosingTeamToAttackingTeam(losingTeam: Team) -> (Team, Team) {
-            /// the losing team in the last round becomes the attacking team of the new assault
-            let local_AttackingTeam = losingTeam
-            let local_TargetTeam = self
-            print("  🛂 L'équipe numéro \"\(local_AttackingTeam.teamId + 1)\" \"\(local_AttackingTeam.teamName )\" ayant perdu l'assaut numéro \(Game.counter-1), devient l'équipe attaquante!" )
-            print("")
-            return (local_AttackingTeam, local_TargetTeam)
-        } /// end of : fileprivate func switchLosingTeamToAttackingTeam
-    
-    
-    
+    // MARK: - Switch Losing Team to Attacking Team
+    func switchLosingTeamToAttackingTeam(losingTeam: Team) -> (Team, Team) {
+        /// the losing team in the last round becomes the attacking team of the new assault
+        let local_AttackingTeam = losingTeam
+        let local_TargetTeam = self
+        print("  🛂 L'équipe numéro \"\(local_AttackingTeam.teamId + 1)\" \"\(local_AttackingTeam.teamName )\" ayant perdu l'assaut numéro \(Game.counter-1), devient l'équipe attaquante!" )
+        print("")
+        return (local_AttackingTeam, local_TargetTeam)
+    } /// end of : fileprivate func switchLosingTeamToAttackingTeam
     
 } //end of: class Team

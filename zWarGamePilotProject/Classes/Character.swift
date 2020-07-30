@@ -86,8 +86,9 @@ final class Character : Team {
     // print character's characteristics
     func displayTheCharacteristicsOfOneCharacterOfTheTeam() {
         let sign = self.role.roleWeapon.effect > 0 ? "+" : ""
-        print("     \"\(self.characterName)\", un \"\(self.role.roleName)\" avec \(self.role.life)\\\(self.role.maxLife) points de vie,\n     Action : \"\(self.role.roleWeapon.weaponName)\" avec un impact de \(sign)\(self.role.roleWeapon.effect) points de vie à la victime.\n")
+        print("     \"\(self.characterName)\", un \"\(self.role.roleName)\" avec \(self.role.life)\\\(self.role.maxLife) points de vie,\n     Action : \"\(self.role.roleWeapon.weaponName)\" avec un impact de \(sign)\(self.role.roleWeapon.effect) points de vie pour la victime.\n")
     } // end of : displayCharacteristicsCharacter()
     
 } // class
+
 
