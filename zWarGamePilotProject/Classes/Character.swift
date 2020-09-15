@@ -13,11 +13,11 @@ final class Character {
     // MARK: - properties and initialisation
     let gameName: String
     
-    var teamId:Int
-    var teamName: String
+    let teamId:Int
+    let teamName: String
     
-    var characterId: Int
-    var characterName: String
+    let characterId: Int
+    let characterName: String
     
     var role: Role = Healer() //Healer is arbitrary creation and initialization to abort optionnal problems
        
@@ -31,8 +31,6 @@ final class Character {
         self.characterId = characterId
         self.characterName = characterName
         
-        self.characterId = characterId
-        self.characterName = characterName
         
         //super.init(gameName: gameName, teamId: teamId, teamName: teamName)
     }

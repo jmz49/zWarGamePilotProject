@@ -14,7 +14,7 @@ class Game {
     // MARK: - Global portability properties in the game
     
     // Member description
-    var gameName: String
+    let gameName: String
     
     init(gameName: String) {
         self.gameName = gameName

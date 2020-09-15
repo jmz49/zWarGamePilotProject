@@ -14,8 +14,8 @@ class Team {
     
     let gameName: String
     
-    var teamId:Int
-    var teamName: String
+    let teamId:Int
+    let teamName: String
     
     var characters: [Character] = []
     
