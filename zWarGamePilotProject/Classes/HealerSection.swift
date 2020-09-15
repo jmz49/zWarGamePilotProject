@@ -10,10 +10,11 @@ import Foundation
 
 class HealerSection {
     
-    var teamConcerned: Team
-    var teamNotConcerned: Team
-    var healerChoosen: Character
-    var characterSelectedToHeal: Character = Game.teams[0].characters[0] // arbitrary initialization
+    fileprivate var teamConcerned: Team
+    fileprivate var teamNotConcerned: Team
+    fileprivate var healerChoosen: Character
+    
+    fileprivate var characterSelectedToHeal: Character = Game.teams[0].characters[0] // arbitrary initialization
     
     init (teamConcerned: Team, teamNotConcerned: Team, healerChoosen: Character){
         self.teamConcerned = teamConcerned
@@ -21,7 +22,7 @@ class HealerSection {
         self.healerChoosen = healerChoosen
     }
     
-    func treatmentProcessOfTheHealer() -> (Team, Team) {
+    internal func treatmentProcessOfTheHealer() -> (Team, Team) {
         
         var local_WinningTeam: Team = Game.teams[0]
         var local_LosingTeam: Team = Game.teams[0]
@@ -43,7 +44,7 @@ class HealerSection {
             let isTheChoiceValid: Bool = isThisCareChoiceValid(characterSelectedToHeal: characterSelectedToHeal)
             
             if isTheChoiceValid {
-                validCareChoice()
+                validCareChoice(characterSelectedToHeal: characterSelectedToHeal)
                 local_WinningTeam = teamConcerned
                 local_LosingTeam = teamNotConcerned
             } else {
@@ -58,14 +59,14 @@ class HealerSection {
     
     
     // MARK: - Healing section
-    func displayThePartnersToBeTreated() {
+    fileprivate func displayThePartnersToBeTreated() {
         
         for index in 0 ... constants.DEFAULT_CHARACTERS_NUMBER - 1 {
             print("         \(index+1) | \(teamConcerned.characters[index].characterName) \(teamConcerned.characters[index].role.roleName) \(teamConcerned.characters[index].role.life)\\\(teamConcerned.characters[index].role.maxLife)")
         } // end of :  for index in 0... constants.DEFAULT_CHARACTERS_NUMBER - 1 {
     } // end of :  displayPartnersToHeal(healerTeam: Team) {
     
-    func selectCharacterToHeal() -> Character {
+    fileprivate func selectCharacterToHeal() -> Character {
         var selectedFighter: Character = teamConcerned.characters[0]
         var choiceIsOk: Bool = true
         
@@ -88,7 +89,7 @@ class HealerSection {
     } // end of func selectCharacterToHeal()
     
     
-    func isTheHealerStaysAlone()-> Bool {
+    fileprivate func isTheHealerStaysAlone()-> Bool {
         var numberOfCharacterDead: Int = 0
         teamConcerned.characters.forEach { (character) in
             // nested tests because only one solution is possible
@@ -119,8 +120,7 @@ class HealerSection {
         } // end of :  if characterSelectedToHeal.name == constants.HEALER_ROLE {
     } // end of : func validCareChoice
     
-    
-    fileprivate func validCareChoice() {
+    fileprivate func validCareChoice(characterSelectedToHeal: Character) {
         
         // healing execution
         characterSelectedToHeal.role.life = characterSelectedToHeal.role.life + healerChoosen.role.roleWeapon.effect
@@ -129,7 +129,7 @@ class HealerSection {
         if characterSelectedToHeal.role.life > characterSelectedToHeal.role.maxLife {
             characterSelectedToHeal.role.life = characterSelectedToHeal.role.maxLife
         }
-        print("\n     👺 Après les soins prodigués par \"\(healerChoosen.characterName)\", \"\(healerChoosen.role.roleName)\" de l'équipe \"\(teamNotConcerned.teamName)\"\n        son compère \"\(characterSelectedToHeal.characterName)\", \"\(characterSelectedToHeal.role.roleName)\" a maintenant  \(characterSelectedToHeal.role.life) points de vie 💪🏼")
+        print("\n     👺 Après les soins prodigués par \"\(healerChoosen.characterName)\", \"\(healerChoosen.role.roleName)\" de l'équipe \"\(healerChoosen.teamName)\"\n        son compère \"\(characterSelectedToHeal.characterName)\", \"\(characterSelectedToHeal.role.roleName)\" a maintenant  \(characterSelectedToHeal.role.life) points de vie 💪🏼")
     }
     
     fileprivate func notValidCareChoice() {
@@ -137,7 +137,7 @@ class HealerSection {
     }
     
     // MARK: - theHealerBeAloneFlees
-    func theHealerStaysAloneAndFlees() {
+    fileprivate func theHealerStaysAloneAndFlees() {
         
         // Last survivor, the healer is declared dead. He cannot fight, so we declare the end of the game
         self.theHealerChoosenIsDeclaredDead()
@@ -151,7 +151,7 @@ class HealerSection {
     
     // MARK: -  CharacterIsDeclaredDead
     // a character is declared dead, he's out !
-    func theHealerChoosenIsDeclaredDead() {
+    fileprivate func theHealerChoosenIsDeclaredDead() {
         // Last survivor, the HEALER is declared dead. He cannot fight, so we declare him dead.
         healerChoosen.role.life = 0
     } // end of : func  characterIsDeclaredDead() {

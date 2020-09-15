@@ -8,9 +8,11 @@
 
 import Foundation
 
-class Team : Game {
+class Team {
     
     // MARK: -  Properties and initialization
+    
+    let gameName: String
     
     var teamId:Int
     var teamName: String
@@ -18,17 +20,18 @@ class Team : Game {
     var characters: [Character] = []
     
     init(gameName: String, teamId: Int, teamName: String) {
+        self.gameName = gameName
         self.teamId = teamId
         self.teamName = teamName
-        super.init(gameName: gameName)
+        //super.init(gameName: gameName)
     }
     
-    override func displayFromCurrentClass() {
-        super.displayFromCurrentClass()
-        print("    🟢 Display from class Team")
-        print("    🟢 self.teamId : \(self.teamId)")
-        print("    🟢 self.teamName : \(self.teamName)\n")
-    }
+//    override func displayFromCurrentClass() {
+//        super.displayFromCurrentClass()
+//        print("    🟢 Display from class Team")
+//        print("    🟢 self.teamId : \(self.teamId)")
+//        print("    🟢 self.teamName : \(self.teamName)\n")
+//    }
     
     
     // MARK: - Create characters for each team
@@ -56,7 +59,7 @@ class Team : Game {
     } // end of : fileprivate func displayCharactersTeamForFight() {
     // MARK: - Select Character for fight
     
-    func characterSelection(context: String) -> Character {
+    fileprivate func characterSelection(context: String) -> Character {
         //        displayAllCharactersOfTheTeam()
         var selectedCharacter: Character = characters[0]
         var choiceIsOk: Bool = true

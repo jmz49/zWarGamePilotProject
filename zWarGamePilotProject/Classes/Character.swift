@@ -8,35 +8,50 @@
 
 import Foundation
 
-final class Character : Team {
+final class Character {
     //
     // MARK: - properties and initialisation
+    let gameName: String
+    
+    var teamId:Int
+    var teamName: String
+    
     var characterId: Int
     var characterName: String
     
-    var role: Role = Healer()
+    var role: Role = Healer() //Healer is arbitrary creation and initialization to abort optionnal problems
        
     init(gameName: String, teamId: Int, teamName: String, characterId: Int, characterName: String) {
+        
+        self.gameName = gameName
+        
+        self.teamId = teamId
+        self.teamName = teamName
+        
         self.characterId = characterId
         self.characterName = characterName
-        super.init(gameName: gameName, teamId: teamId, teamName: teamName)
+        
+        self.characterId = characterId
+        self.characterName = characterName
+        
+        //super.init(gameName: gameName, teamId: teamId, teamName: teamName)
     }
     
-    override func displayFromCurrentClass() {
-        super.displayFromCurrentClass()
-        print("        🟣 Display from class Character")
-        print("        🟣 self.characterId) : \(self.characterId)")
-        print("        🟣 self.characterName : \(self.characterName)\n")
-        print("          🔸 self.role")
-        print("          🔸 self.role.roleName : \(self.role.roleName)")
-        print("          🔸 self.role.life : \(self.role.life)")
-        print("          🔸 self.role.maxLife : \(self.role.maxLife)\n")
-        print("            🔺 self.role!.weapon")
-        print("            🔺 self.role.weapon.weaponName : \(self.role.roleWeapon.weaponName)")
-        print("            🔺 self.role.weapon.effect : \(self.role.roleWeapon.effect)")
-        print("")
-        print(constants.TIRETS)
-    } /// end of : override func displayFromCurrentClass() {
+//    override func displayFromCurrentClass() {
+//        super.displayFromCurrentClass()
+//        print("        🟣 Display from class Character")
+//        print("        🟣 self.characterId) : \(self.characterId)")
+//        print("        🟣 self.characterName : \(self.characterName)\n")
+//        print("          🔸 self.role")
+//        print("          🔸 self.role.roleName : \(self.role.roleName)")
+//        print("          🔸 self.role.life : \(self.role.life)")
+//        print("          🔸 self.role.maxLife : \(self.role.maxLife)\n")
+//        print("            🔺 self.role!.weapon")
+//        print("            🔺 self.role.weapon.weaponName : \(self.role.roleWeapon.weaponName)")
+//        print("            🔺 self.role.weapon.effect : \(self.role.roleWeapon.effect)")
+//        print("")
+//        print(constants.TIRETS)
+//    } /// end of : override func displayFromCurrentClass() {
     
     
     func createRole() {

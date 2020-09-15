@@ -35,14 +35,15 @@ extension Game {
         Game.teams[0].characters[1].role = Role_2()
         Game.teams[0].characters[2].role = Healer()
 
-        if displayColoredBalls {
-            print("Création de l'équipe 0 - characters 0\n")
-            Game.teams[0].characters[0].displayFromCurrentClass()
-            print("Création de l'équipe 0 - characters 1\n")
-            Game.teams[0].characters[1].displayFromCurrentClass()
-            print("Création de l'équipe 0 - characters 2\n")
-            Game.teams[0].characters[2].displayFromCurrentClass()
-        }
+//        if displayColoredBalls {
+//            print("Création de l'équipe 0 - characters 0\n")
+//            Game.teams[0].characters[0].displayFromCurrentClass()
+//            print("Création de l'équipe 0 - characters 1\n")
+//            Game.teams[0].characters[1].displayFromCurrentClass()
+//            print("Création de l'équipe 0 - characters 2\n")
+//            Game.teams[0].characters[2].displayFromCurrentClass()
+//        }
+        
         print("  Récapitulation :")
         Game.teams[0].displayTheCharacteristicsOfAllCharacterOfTheTeam()
         
@@ -66,14 +67,16 @@ extension Game {
         Game.teams[1].characters[2].role = Healer()
 
         print("\(constants.TIRETS)")
-        if displayColoredBalls {
-            print("Création de l'équipe 1 - characters 0\n")
-            Game.teams[1].characters[0].displayFromCurrentClass()
-            print("Création de l'équipe 1 - characters 1\n")
-            Game.teams[1].characters[1].displayFromCurrentClass()
-            print("Création de l'équipe 1 - characters 2\n")
-            Game.teams[1].characters[2].displayFromCurrentClass()
-        }
+        
+//        if displayColoredBalls {
+//            print("Création de l'équipe 1 - characters 0\n")
+//            Game.teams[1].characters[0].displayFromCurrentClass()
+//            print("Création de l'équipe 1 - characters 1\n")
+//            Game.teams[1].characters[1].displayFromCurrentClass()
+//            print("Création de l'équipe 1 - characters 2\n")
+//            Game.teams[1].characters[2].displayFromCurrentClass()
+//        }
+        
         print("  Récapitulation :")
         Game.teams[1].displayTheCharacteristicsOfAllCharacterOfTheTeam()
         

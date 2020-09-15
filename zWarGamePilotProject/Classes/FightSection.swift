@@ -10,11 +10,10 @@ import Foundation
 
 class FightSection {
     
-    var attackingCharacter: Character
-    var targetCharacter: Character
-    var local_WinningTeam = Game.teams[0] // arbitrary initialization
-    var local_LosingTeam = Game.teams[0] // arbitrary initialization
+    fileprivate var attackingCharacter: Character
+    fileprivate var targetCharacter: Character
     
+    // signature de la classe
     init (attackingCharacter: Character, targetCharacter: Character){
         self.attackingCharacter = attackingCharacter
         self.targetCharacter = targetCharacter
@@ -23,7 +22,10 @@ class FightSection {
     
     // MARK: - Assault
     
-    func launchOfTheAssault() -> (Team, Team) {
+    internal func launchOfTheAssault() -> (Team, Team) {
+        
+        var local_WinningTeam: Team
+        var local_LosingTeam: Team
         
         // random dodge event
         //        #warning("Game.counter == 3")
@@ -40,15 +42,14 @@ class FightSection {
     
     // Run func dodge | Random event
     fileprivate func sequencesOfChestAndDodgeAssault() -> (Team, Team) {
-        self.displayAttackAnnouncementGeneric(targetCharacter: targetCharacter)
+        displayAttackAnnouncementGeneric()
         
-        self.displayChestAndDodgeAnnouncement(targetCharacter: targetCharacter)
+        displayChestAndDodgeAnnouncement()
         
         // function attack reversed
-        self.executionOfAnyTypeOfAssault(winner: targetCharacter, looser: attackingCharacter)
-        
+        executionOfAnyTypeOfAssaultGeneric(winner: targetCharacter, looser: attackingCharacter)
         // exit of the real fight
-        self.displayChestAndDodgeExit(targetCharacter: targetCharacter)
+        displayChestAndDodgeExit()
         
         let local_WinningTeam = Game.teams[targetCharacter.teamId]
         let local_LosingTeam = Game.teams[attackingCharacter.teamId]
@@ -56,7 +57,7 @@ class FightSection {
         return (local_WinningTeam, local_LosingTeam)
     } // end of: func dodge(attackingCharacter: Character, targetCharacter: Character) {
     
-    fileprivate func displayAttackAnnouncementGeneric(targetCharacter: Character ) {
+    fileprivate func displayAttackAnnouncementGeneric() {
         print("\n\(constants.SUB_TIRETS)      ⚔️👊 GO !\n\(constants.SUB_TIRETS)")
         print("      🛂 Le combat va avoir lieu entre :\n         - l'attaquant \"\(attackingCharacter.characterName)\", un \"\(attackingCharacter.role.roleName)\" de l'équipe \"\(attackingCharacter.teamName)\", avec \(attackingCharacter.role.life)\\\(attackingCharacter.role.maxLife) points de vie,\n         - contre sa cible \"\(targetCharacter.characterName)\", un \"\(targetCharacter.role.roleName)\" de l'équipe \"\(targetCharacter.teamName)\", avec \(targetCharacter.role.life)\\\(targetCharacter.role.maxLife) points de vie,\n" )
         
@@ -65,7 +66,7 @@ class FightSection {
         print("      ⚔️⚔️⚔️\n")
     } // end of :  func displayFightAnnouncement(...
     
-    fileprivate func displayChestAndDodgeAnnouncement(targetCharacter: Character){
+    fileprivate func displayChestAndDodgeAnnouncement(){
         
         // save the current attackingCharacter.role.life in the variable Game.memLife
         // to later remember how many hit points the attackingCharacter actually lost.
@@ -84,7 +85,7 @@ class FightSection {
         print("")
     } // end of : func displayDodgeAnnouncement
     
-    fileprivate func displayChestAndDodgeExit(targetCharacter: Character) {
+    fileprivate func displayChestAndDodgeExit() {
         
         var endingText: String
         if isTheCharacterStillAlive(anyCharacter: attackingCharacter) {
@@ -103,15 +104,14 @@ class FightSection {
     // MARK: - Normal Attack Section
     fileprivate func sequencesOfNormalAssault() -> (Team, Team) {
         
-        displayAttackAnnouncementGeneric(targetCharacter: targetCharacter)
+        displayAttackAnnouncementGeneric()
         
-        executionOfAnyTypeOfAssault(winner: attackingCharacter, looser: targetCharacter)
+        executionOfAnyTypeOfAssaultGeneric(winner: attackingCharacter, looser: targetCharacter)
         
         // fight Bim... Bam... Boum... !
         
-        
         // exit of the normal assault
-        displayNormalAttackExit(targetCharacter: targetCharacter)
+        displayNormalAttackExit()
         
         let local_WinningTeam = Game.teams[attackingCharacter.teamId]
         let local_LosingTeam = Game.teams[targetCharacter.teamId]
@@ -119,7 +119,7 @@ class FightSection {
         return (local_WinningTeam, local_LosingTeam)
     } // end of : func fight
     
-    fileprivate func displayNormalAttackExit(targetCharacter: Character){
+    fileprivate func displayNormalAttackExit(){
         
         var endingText: String
         if isTheCharacterStillAlive(anyCharacter: targetCharacter) {
@@ -132,11 +132,11 @@ class FightSection {
         print("         - l'attaqué \"\(targetCharacter.characterName)\", un \"\(targetCharacter.role.roleName)\" de l'équipe \(targetCharacter.teamId+1) - \"\(targetCharacter.teamName)\",\(endingText)")
     } // end of : func fightExit
     
-    func executionOfAnyTypeOfAssault(winner: Character, looser: Character) {
+    fileprivate func executionOfAnyTypeOfAssaultGeneric(winner: Character, looser: Character) {
         
         // unique instruction concretizing the virtual fight
         // PLEASE NOTE : This is an addition of negative relative numbers (effect)
-        looser.role.life = looser.role.life + attackingCharacter.role.roleWeapon.effect
+        looser.role.life = looser.role.life + winner.role.roleWeapon.effect
         
         // in case of negative roleLife
         if looser.role.life < 0 {
@@ -144,9 +144,25 @@ class FightSection {
         } // end of: if
     } // executionOfAnyTypeOfAssault
     
-    func isTheCharacterStillAlive(anyCharacter: Character) -> Bool {
+    fileprivate func isTheCharacterStillAlive(anyCharacter: Character) -> Bool {
         return anyCharacter.role.life > 0 ? true : false
     } // end of: isStillAlive() -> Bool {
 
     
 } // Class
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

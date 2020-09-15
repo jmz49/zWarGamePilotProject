@@ -52,26 +52,27 @@ class Game {
         print("\n\(constants.LINE)\n")
     }
     
-    func displayFromCurrentClass() {
-        print(" \n🔴 Display from class Game")
-        print("🔴 self.gameName : \"\(self.gameName)\"\n")
-    }
+//    func displayFromCurrentClass() {
+//        print(" \n🔴 Display from class Game")
+//        print("🔴 self.gameName : \"\(self.gameName)\"\n")
+//    }
     
     
     // MARK: - 1 - configuration of players, teams, characters
     func mainCasting() {
         
-        if displayColoredBalls {
-            displayFromCurrentClass()
-        }
+//        if displayColoredBalls {
+//            displayFromCurrentClass()
+//        }
         
 //        var anyTeam: Team
         for playerIndex in 0...constants.DEFAULT_PLAYERS_NUMBER - 1 {
             
             Game.teams.append(creationOfTeams(playerIndex: playerIndex))
-            if displayColoredBalls {
-                Game.teams[playerIndex].displayFromCurrentClass()
-            }
+            
+//            if displayColoredBalls {
+//                Game.teams[playerIndex].displayFromCurrentClass()
+//            }
             
             var anyCharacter: Character
             for characterIndex in 0...constants.DEFAULT_CHARACTERS_NUMBER - 1 {
@@ -81,9 +82,9 @@ class Game {
                 // to respect the concept of class responsibility
                 Game.teams[playerIndex].appendNewCharacterOfTheTeam(newCharacter: anyCharacter)
                 
-                if displayColoredBalls {
-                    anyCharacter.displayFromCurrentClass()
-                }
+//                if displayColoredBalls {
+//                    anyCharacter.displayFromCurrentClass()
+//                }
             } /// for characterIndex in 0...constants.DEFAULT_CHARACTERS_NUMBER
             
             // to respect the concept of class responsibility
@@ -113,14 +114,14 @@ class Game {
     func mainFight() {
         
         // creation of instance variables initialized by default.
-        var attackingTeam: Team = Game.teams[0]
-        var targetTeam: Team = Game.teams[1]
+        var attackingTeam: Team = Game.teams[0] //arbitrary creation and initialization
+        var targetTeam: Team = Game.teams[0] //arbitrary creation and initialization
         
-        var attackingCharacter: Character = Game.teams[0].characters[0]
-        var targetCharacter: Character = Game.teams[1].characters[0]
+        var attackingCharacter: Character = Game.teams[0].characters[0] //arbitrary creation and initialization
+        var targetCharacter: Character = Game.teams[0].characters[0] //arbitrary creation and initialization
         
-        var winningTeam: Team = Game.teams[0]
-        var losingTeam: Team = winningTeam
+        var winningTeam: Team = Game.teams[0] //arbitrary creation and initialization
+        var losingTeam: Team = Game.teams[0] //arbitrary creation and initialization
         
         // fight loop
         repeat {
@@ -147,9 +148,9 @@ class Game {
             if attackingCharacter.role.roleName == constants.HEALER_ROLE {
                 // case of Healer, we have to go to his special treatment
                 // instanciation de la classe HealerTreatmentProcess
-                let healerTreatmentProcess = HealerSection(teamConcerned: attackingTeam, teamNotConcerned: targetTeam, healerChoosen: attackingCharacter)
+                let healerSection = HealerSection(teamConcerned: attackingTeam, teamNotConcerned: targetTeam, healerChoosen: attackingCharacter)
                 // appel de la fonction treatmentProcessOfTheHealer de cette instance
-                (winningTeam, losingTeam) = healerTreatmentProcess.treatmentProcessOfTheHealer()
+                (winningTeam, losingTeam) = healerSection.treatmentProcessOfTheHealer()
             } /// end of :  if attackingCharacter.role.roleName == constants.GREY_ROLE
             
             // if the first attacker isn't an healer with a special treatment
@@ -162,26 +163,20 @@ class Game {
             if targetCharacter.role.roleName == constants.HEALER_ROLE {
                 // case of Healer, we have to go to his special treatment
                  // instanciation de la classe HealerTreatmentProcess
-                 let healerTreatmentProcess = HealerSection(teamConcerned: targetTeam, teamNotConcerned: attackingTeam, healerChoosen: targetCharacter)
+                 let healerSection = HealerSection(teamConcerned: targetTeam, teamNotConcerned: attackingTeam, healerChoosen: targetCharacter)
                  // appel de la fonction treatmentProcessOfTheHealer de cette instance
-                 (winningTeam, losingTeam) = healerTreatmentProcess.treatmentProcessOfTheHealer()
+                 (winningTeam, losingTeam) = healerSection.treatmentProcessOfTheHealer()
             } /// end of : if targetCharacter.role.roleName == constants.GREY_ROLE
             
             // MARK: - Fight section
             
             // Run the assault func WITH THE TWO CHARACTERS selected
             if attackingCharacter.role.roleName != constants.HEALER_ROLE && targetCharacter.role.roleName != constants.HEALER_ROLE {
- 
-                //                (winningTeam, losingTeam) = attackingCharacter.launchOfTheAssault(targetCharacter: targetCharacter)
-                
                 
                 // instanciation de la classe HealerTreatmentProcess
                 let fightSection = FightSection(attackingCharacter: attackingCharacter, targetCharacter: targetCharacter)
                 // appel de la fonction treatmentProcessOfTheHealer de cette instance
                 (winningTeam, losingTeam) = fightSection.launchOfTheAssault()
-                
-                
-
             }
             
         } while Game.teams[0].checkIfTeamIsAlive() && Game.teams[1].checkIfTeamIsAlive()
@@ -198,7 +193,7 @@ class Game {
         displayFightStats()
     } // end of : func endOfGame()
     
-    fileprivate  func fightResults() {
+    func fightResults() {
         print("\n             ❌ La partie est terminée ❌\n")
         
         if  Game.teams[0].checkIfTeamIsAlive(){
@@ -212,7 +207,7 @@ class Game {
         print("     🏆 L'équipe gagnante est \"\(Game.teams[Game.winner].teamName)\" en \(Game.counter) tours.\n\n     ☠️ L'équipe perdante est \(Game.teams[Game.looser].teamName)👎🏽👎🏽👎🏽\n")
     } // end of :fileprivate  func fightResults() {
     
-    fileprivate func displayFightStats() {
+    func displayFightStats() {
         
         print("\(constants.SUB_LINE)\n               Inventaire des effectifs résiduels : \n")
         
@@ -225,5 +220,14 @@ class Game {
     } // end of : battleTeamStats()
     
 } // end of : class Game
+
+
+
+
+
+
+
+
+
 
 
